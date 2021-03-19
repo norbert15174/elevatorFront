@@ -1,0 +1,49 @@
+
+.formContainer{
+  position: relative;
+  width: 80%;
+  left: 10%;
+  top: 20%;
+}
+
+.formLabel{
+  position: absolute;
+  opacity: 0.6;
+  font-size: 20px;
+  left: 20px;
+  pointer-events: none;
+  color: #f2cb79;
+  transition: all .22s;
+  top: calc(50% + 10px);
+  transform: translateY(-50%);
+  display: block;
+}
+.b{
+  width: 100%;
+  padding: 20px;
+  background: #222;
+  margin: 10px 0;
+  border: none;
+  color: #aaa;
+  position: relative;
+  margin-top: 30px;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+.b:focus{
+  background: #333;
+  outline: 0;
+}
+
+.b:focus + .formLabel,
+.b:hover + .formLabel,
+.b:valid + .formLabel
+{
+  top: 0px;
+  font-size: 15px;
+  transform: translateY(0);
+  left: 5px;
+  opacity: 1;
+}
+
