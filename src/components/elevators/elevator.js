@@ -11,7 +11,8 @@ const Container = styled.div`
   grid-template-columns: 25% 25% 25% 25%;
   position: relative;
   @media only screen and (max-width: 1000px) {
-    grid-template-columns: 50% 50%;
+    margin-top: 0;
+    grid-template-columns: 100%;
   }
 `;
 
@@ -41,8 +42,15 @@ const Button = styled.button`
 
 const Flats = styled.div`
   margin-top: 20px;
-  color: #f2cb79;
+  color: #333;
   font-size: 20px;
+  position: relative;
+  font-weight: 700;
+  left: 20px;
+  width: 90%;
+  margin-bottom: 30px;
+  border-bottom: 3px dotted #333;
+  padding-bottom: 50px;
 `;
 
 const ChooseFloor = styled.div`
@@ -120,7 +128,7 @@ function Elevator({ user, elev, build, num }) {
     const [close, setClose] = useState("no");
     const [floor, setFloor] = useState(1);
   const addFloor = (id) => {
-      if(floor > 1 && floor <= num){
+      if(floor >= 1 && floor <= num){
         fetch(url + "/elevator/add/" + floor, {
             method: "post",
             headers: {
@@ -165,7 +173,7 @@ function Elevator({ user, elev, build, num }) {
     <Container>
       <Flats>
         Next Floors:{" "}
-        {elev.nextFlats !== null ? elev.nextFlats.map((e) => e + ",") : null}
+        {elev.nextFloors !== null ? elev.nextFloors.map((e) => e + ",") : null}
       </Flats>
       <Button onClick={(e) => elevatorMove()}>Step</Button>
       <Button onClick={(e) => setClose("yes")}>Pick Up</Button>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import url from "./../../url";
 import { AiOutlineHome } from "react-icons/ai";
 import { GiElevator } from "react-icons/gi";
-import { MdExpandMore } from "react-icons/md";
 import Elevator from "./elevator";
 const Container = styled.div`
   width: 100vw;
@@ -31,6 +30,11 @@ const Building = styled.div`
   -webkit-box-shadow: 1px 6px 16px 5px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 6px 16px 5px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 6px 16px 5px rgba(0, 0, 0, 0.75);
+  @media only screen and (max-width: 1000px) {
+    width: 88vw;
+    padding: 15px 10px 200px 10px;
+    left: 3vw;
+  }
 `;
 
 const BuildingInformationContainer = styled.div`
@@ -77,49 +81,43 @@ const ElevatorIcon = styled(GiElevator)`
   font-size: 50px;
   top: 20px;
   position: relative;
- 
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const ElevatorContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 150px 200px 200px 200px;
+  grid-template-columns: 25% 25% 25% 25%;
   position: relative;
   @media only screen and (max-width: 1000px) {
-    grid-template-columns: 250px 200px 200px;
+    grid-template-columns: 50% 50%;
   }
   @media only screen and (max-width: 800px) {
-    grid-template-columns: 200px 200px;
+    grid-template-columns: 50% 50%;
   }
 `;
 
 const ElevatorId = styled.h1`
   color: #f2cb79;
+  position: relative;
+  @media only screen and (max-width: 1000px) {
+    font-size: 20px;
+    left: 20px;
+  }
 `;
 
 const CurrentFloor = styled.h1`
   color: #f2cb79;
-  position: absolute;
-  right: 30px;
+  position: relative;
   @media only screen and (max-width: 1000px) {
-    position: relative;
-    right: 0;
+    font-size: 20px;
+    left: 20px;
   }
 `;
 
-const MoreIcon = styled(MdExpandMore)`
-  color: #333;
-  font-size: 50px;
-  position: relative;
-  top: 15px;
-  cursor: pointer;
-`;
 
-const MoreText = styled.h1`
-  position: relative;
-  top: -15px;
-  color: #f2cb79;
-`;
 
 const ElevatorMainContainer = styled.div`
   display: grid;
@@ -157,6 +155,16 @@ const Button = styled.button`
   }
 `;
 
+const ItemContainer = styled.div`
+  position: relative;
+  height: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 800px) {
+    height: 50px;
+  }
+`;
+
 class BuildingElevator extends React.Component {
   constructor(props) {
     super(props);
@@ -170,7 +178,6 @@ class BuildingElevator extends React.Component {
   };
 
   componentDidMount() {
-      
     const path =
       url +
       "/elevator/user/" +
@@ -259,12 +266,16 @@ class BuildingElevator extends React.Component {
               {Object.values(this.state.data.elevatorInUseList).map((v) => (
                 <ElevatorMainContainer key={v.id}>
                   <ElevatorContainer>
-                    <ElevatorId>ID # {v.id}</ElevatorId>
-                    <ElevatorIcon></ElevatorIcon>
-                    <MoreText>
-                      More<MoreIcon></MoreIcon>
-                    </MoreText>
-                    <CurrentFloor>Current Flat: {v.currentFlat}</CurrentFloor>
+                    <ItemContainer>
+                      <ElevatorId>ID # {v.id}</ElevatorId>
+                    </ItemContainer>
+
+                    <ItemContainer>
+                      <ElevatorIcon></ElevatorIcon>
+                    </ItemContainer>
+                    <ItemContainer>
+                      <CurrentFloor>Current Floor: {v.currentFloor}</CurrentFloor>
+                    </ItemContainer>
                   </ElevatorContainer>
                   <Elevator
                     user={this.props.match.params.name}

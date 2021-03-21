@@ -147,7 +147,7 @@ function Login() {
 
   if (localStorage.getItem("Bearer") != null && localStorage.getItem("Username") != null) {
 
-    fetch(url + "/building/add/elevator", {
+    fetch(url + "/building/isauth", {
       method: "get",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("Bearer"),
@@ -175,7 +175,7 @@ function Login() {
         <div className={style.formContainer}>
           <input
             className={style.b}
-            type="tel"
+            type="text"
             required="required"
             onChange={(e) => setUsername(e.target.value)}
           />

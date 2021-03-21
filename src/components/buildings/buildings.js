@@ -53,7 +53,8 @@ const BuildingList = styled.div`
   }
   grid-template-columns: 25vw 25vw 25vw;
   @media only screen and (max-width: 800px) {
-    grid-template-columns: 80vw;
+    width: 80vw;
+    grid-template-columns: 90vw;
   }
 `;
 
@@ -71,6 +72,10 @@ const BuildingContainer = styled.div`
       transform: translateY(0%);
       opacity: 1;
     }
+  }
+  @media only screen and (max-width: 800px) {
+    left: -10vw;
+    width: 95vw;
   }
 `;
 
@@ -266,8 +271,8 @@ class Building extends React.Component {
           <IsSure>
               
             <TextInSure>
-              Are you sure that you want to delete this building from the
-              buildings list ?
+              
+              Are you sure you want to delete this building?
               <ButtonContainer>
                 <AnswerButton func="yes" onClick={(del) => this.deleteBuilding(this.state.remove)}>Yes</AnswerButton>
                 <AnswerButton func="no" onClick={(notdel) => this.setRemove(" ")}>No</AnswerButton>
