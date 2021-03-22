@@ -79,7 +79,7 @@ function AddBuildings() {
             alert("Building has been added");
             window.location.reload();
           } else{
-            alert("Building couldn't be added")
+            alert("Building hasn't been added")
           }});
 
           

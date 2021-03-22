@@ -212,7 +212,7 @@ class BuildingElevator extends React.Component {
         window.alert("Elevator has been added");
         window.location.reload();
       } else {
-        window.alert("Elevator couldn't be added");
+        window.alert("Elevator hasn't been added");
       }
     });
   }

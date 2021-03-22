@@ -1,2 +1,2 @@
-const url = "http://localhost:8000";
+const url = "https://elevator-308123.ew.r.appspot.com";
 export default url;
