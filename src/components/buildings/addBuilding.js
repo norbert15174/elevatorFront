@@ -11,7 +11,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.9);
   left: 5vw;
   top: 5vh;
-  z-index: 20;
+  z-index: 19;
 `;
 
 const Section = styled.p`
